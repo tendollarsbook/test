@@ -1,0 +1,21 @@
+<% extend('./layouts/layouthome') %>
+
+<div class="emailcancel">
+  <div class="container">
+    <form action="/emailcancel" method="post">
+      <div class="container">
+        <% if (hasInfo) { %>
+          <% for (var prop in messages ) { %>
+            <div class="error-title error-tt">
+              <%- messages[prop] %>
+            </div>
+          <% } %>
+        <% } %>
+        <h1 class="error-title">真的不想再看到十元部落的資訊嗎 >''< </h1>
+        <a href="/" class="btn btn-err">回到網站首頁</a>
+        <input type="text" class="emailcancel-input" name="cancelemail" placeholder="請輸入當時申請 email">
+        <input  class="btn btn-err" type="submit" value="確定取消訂閱" />
+      </div>
+    </form>
+  </div>
+</div>

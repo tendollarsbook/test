@@ -1,0 +1,21 @@
+<% extend('./layouts/layouthome') %>
+
+<div class="signin">
+  <div class="container">
+    <form action="/signin" method="post">
+      <div class="row">
+        <div class="col-10-12 col-push-2">
+          <div class="signin-title">登入帳號</div>
+          <input type="text" class="categories-name" placeholder="請輸入登入帳號" name="email">
+          <div class="signin-title" for="passwd">密碼</div>
+          <input type="password" class="categories-name" placeholder="請輸入密碼" name="passwd">
+        </div>
+      </div>
+      <div class="col-2-12 col-push-10">
+        <!-- <input class="btn btn-submit" type="submit" value="送出" /> -->
+        <button type="submit" class="btn btn-submit">送出</button>
+      </div>
+    </form>
+  </div>
+</div>
+

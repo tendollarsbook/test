@@ -1,0 +1,31 @@
+<% extend('./layouts/layout') %>
+<div class="editpost">
+  <div class="container"> 
+    <div class="row">
+      <div class="col-8-12 col-push-2">
+        <div class="post-title">
+          <%= article.title || ' ' %>
+        </div>
+        <p>
+          <%- article.content || ' ' %>
+        </p>
+        <div class="post-date">
+          <%- moment(article.update_time * 1000).format('YYYY/MM/DD') %>
+        </div>
+        <div class="post-category">
+          <%- categories[article.category].name %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8-12 col-push-2">
+        <a href="/editarticle/<%- article.id %>">
+          <div class="btn btn-editpost">回到編輯畫面</div>
+        </a>
+        <a href="/mailto/<%- article.id %>">
+          <div class="btn btn-editpost">寄送電子報</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

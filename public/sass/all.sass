@@ -1,0 +1,541 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css)
+
+@mixin size($w,$h:$w)
+  width: $w
+  height: $h
+  
+$maincolor: #A1C45A
+$subcolor: #F8B500
+$thirdcolor: #D291BC
+$bgcolor: #FFF9E0
+$whitecolor: #ffffff
+$blackcolor: #282828
+$greycolor: #9B9B9B
+$lightgrey: #D7D7D7
+
+
+*
+  font-family: 微軟正黑體 ,'Helvetica', 'Noto Sans TC', arial, sans-serif
+  position: relative
+  box-sizing: border-box
+
+body,html
+  margin: 0
+  padding: 0
+
+.row
+  &:after
+    content: ""
+    clear: both
+    display: block
+    height: 0
+    visibility: hidden
+  
+.col-2-12,.col-3-12,.col-4-12,.col-8-12,.col-9-12,.col-10-12,.col-12-12
+  padding-left: 8px
+  padding-right: 8px
+  float: left
+
+.col-2-12
+  width: 16.66667% 
+  
+.col-3-12
+  width: 25% 
+  
+.col-4-12
+  width: 33.33333% 
+  
+.col-8-12
+  width: 66.66667%
+
+.col-9-12
+  width: 75%
+
+.col-10-12
+  width: 83.33333%
+  
+.col-12-12
+  width: 100%
+
+.col-push-1
+  left: 8.33333%
+  
+.col-push-2
+  left: 16.66667%
+
+.col-push-10
+  left: 83.33333%
+
+.categories-left
+  float: right
+
+@media(max-width:600px)
+  .categories-left
+    width: 100%
+  .article-right
+    width: 100%
+
+.container
+  min-width: 320px
+  max-width: 1024px
+  margin-left: auto
+  margin-right: auto
+  padding-left: 16px
+  padding-right: 16px
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+
+a
+  text-decoration: none
+  
+.btn
+  display: inline-block
+  vertical-align: middle
+  position: relative
+  margin: 0
+  padding: 8px 56px
+  box-sizing: border-box
+  font-size: 20px
+  line-height: 32px
+  text-align: center
+  font-weight: 500
+  letter-spacing: 0
+  text-decoration: none
+  color: $maincolor
+  border: 2px solid $maincolor
+  background-color: $whitecolor
+  cursor: pointer
+  overflow: hidden
+  user-select: none
+  outline: none
+  transition: all 0.3s
+  border-radius: 5px
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+  &:hover
+    background-color: $maincolor
+    color: $whitecolor
+  
+.image_inner
+  width: 100%
+  padding-top: 40%
+  height: 0
+  position: relative
+  
+.image_cover
+  width: 100%
+  height: 100%
+  border-radius: 8px
+  position: absolute
+  top: 0
+  left: 0
+  background-position: center
+  background-size: cover
+  
+.header
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+  background-color: $blackcolor
+  position: fixed
+  top: 0
+  left: 0
+  +size(100%,72px)
+  z-index: 100
+  // background-color: $maincolor
+  
+.navbar-nav   
+  float: right
+
+@media(max-width: 960px)
+  .navbar-collapse
+    margin-left: -16px
+    margin-right: -16px
+
+.menu-toggle
+  position: absolute
+  top: 0
+  right: 0
+  +size(64px)
+  display: inline-block
+  padding: 12px
+  padding-top: 16px
+  span 
+    display: block
+    +size(100%,3px)
+    background-color: $maincolor
+    margin-bottom: 8px
+@media(min-width: 960px)
+  .menu-toggle
+    display: none
+
+.navbar-logo
+  display: inline-block
+  height: 64px
+  float: none
+  padding: 24px
+  color: $maincolor
+  transition: all 0.3s
+  font-size: 24px
+  font-weight: 900
+  
+.nav-menu
+  float: left
+  li
+    float: left
+  .menu-item
+    display: block
+    padding: 24px
+    color: $maincolor
+    line-height: 32px
+    font-size: 18px
+    transition: all 0.3s
+    &:hover
+      color: $thirdcolor
+
+.nav-icon-group
+  float: left
+  padding-right: 32px
+  padding-top: 16px
+  padding-bottom: 16px
+  line-height: 32px
+  .icon-btn
+    margin-left: 16px
+    vertical-align: top
+    &:last-child
+      // margin-left: 24px
+    
+.icon
+  display: inline-block
+  +size(24px)
+  color: $maincolor
+  padding: 8px
+  font-size: 36px
+  transition: all 0.3s
+  &:hover
+    transform: translateY(-20%)
+
+@media(max-width: 960px)
+  .popup-nav
+    position: fixed
+    top: 0
+    left: 0
+    +size(100%)
+    background-color: #1c1c1c
+    opacity: 0
+    visibility: hidden
+    transition: all 0.3s
+    .nav-menu
+      float: none
+      padding-top: 56px
+    li
+      float: none
+    .nav-icon-group
+      float: none
+      text-align: center
+      padding: 16px
+    .menu-item
+      padding: 16px
+      text-align: center
+  .popup-close
+    position: absolute
+    top: 0
+    right: 0
+    +size(56px)
+    display: inline-block
+    padding: 12px
+    padding-top: 16px
+    span 
+      +size(32px,3px)
+      background-color: $maincolor
+      position: absolute
+      top: 50%
+      &:nth-child(1)
+        transform: translateY(-50%) rotate(45deg)
+      &:nth-child(2)
+        transform: translateY(-50%) rotate(-45deg)
+
+  #overlap:target
+    opacity: 1
+    visibility: visible
+
+.categoryarticle
+  margin-top: 84px
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+  .category-title
+    display: inline-block
+    color: $maincolor
+  .article-title
+    padding-bottom: 0px
+    padding-left: 8px
+  .article-card
+    .article-date
+      padding-top: 0px
+      padding-left: 8px
+  
+.emailcancel
+  margin-top: 124px
+  .btn-err
+    left: 50%
+    transform: translateX(-50%)
+  .error-title
+    margin-bottom: 54px
+  .error-tt
+    margin-bottom: -110px
+  
+.emailcancel-input
+  +size(80%,36px)
+  left: 50%
+  transform: translateX(-50%)
+  padding-left: 16px
+  font-size: 20px
+  margin-bottom: 64px
+  margin-top: -20px
+  
+.btn-cateart
+  padding: 8px 16px
+  border-radius: 100px
+  margin-top: 16px  
+
+.error
+  +size(100%)
+
+.error-title
+  margin-top: 148px
+  margin-bottom: 36px
+  text-align: center
+  font-size: 24px
+  font-weight: 600
+  color: $maincolor
+  
+.btn-err
+  left: 50%
+  transform: translateX(-50%)
+  margin-bottom: 72px
+  
+.subscript
+  +size(100%)
+  margin-top: 124px
+  .btn
+    margin-top: 24px
+    left: 50%
+    transform: translateX(-50%)
+  
+.subscript-name
+  +size(100%,48px)
+  font-size: 16px
+  padding-left: 4px
+    
+.hero-text
+  margin-top: 8px
+  text-align: center
+  padding: 16px
+  font-size: 24px
+  color: $blackcolor
+  
+.slide
+  margin-top: 32px
+  
+.image-text
+  position: absolute
+  bottom: 0
+  width: 100%
+  color: $whitecolor
+  padding: 8px
+  background-color: rgba(black,0.3)
+  border-radius: 8px
+  
+.image-title
+  display: inline-block
+  font-size: 20px
+  line-height: 1.5
+  bottom: 0
+
+.image-date
+  font-size: 16px
+  line-height: 1.5
+  
+.article-list
+  margin-bottom: 32px
+  
+.article-maintitle
+  font-size: 24px
+  padding-top: 32px
+  padding-bottom: 32px
+  text-align: left
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+
+.article-title
+  font-size: 24px
+  padding-bottom: 16px
+  padding-top: 16px
+  color: $maincolor
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+
+.article-card
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+  cursor: pointer
+  margin-bottom: 16px
+  border-radius: 8px
+  box-shadow: 0px 0px 35px rgba(0,0,0,0.3)
+  transition: 0.5s
+  &:hover
+    box-shadow: 5px 5px 60px rgba(0,0,0,0.4)
+    transform: translate(-5px,-5px)
+  .image_cover
+    margin-left: -8px
+  .image_inner
+    width: 100%
+    padding-top: 75%
+  p
+    color: $blackcolor
+    font-size: 16px
+    line-height: 1.5
+    padding: 8px
+  .ariticle-date,.article-category
+    padding: 8px
+    padding-bottom: 16px
+    color: $blackcolor
+    display: inline-block
+  .cat-date,.cat-category
+    padding-top: 0px
+
+  .article-category
+    color: $maincolor
+    
+.pagination 
+  display: flex
+  justify-content: center
+  
+.page-arr, .page-item 
+  vertical-align: middle
+  margin-bottom: 24px
+  width: 42px
+  height: 42px
+  border: 1px solid $lightgrey
+  transition: 0.5s
+  background-color: $greycolor
+  color: $whitecolor
+  &:hover 
+    background-color: $maincolor
+    color: $whitecolor
+.page-arr
+  font-size: 5px
+  padding: 14px 16px
+.page-item 
+  padding: 12px 16px
+.page-active 
+  background-color: $maincolor
+  color: $whitecolor
+.page-disabled
+  background-color: $whitecolor
+  color: $whitecolor
+  border: 1px solid $whitecolor
+  cursor: auto
+  &:hover 
+    background-color: $whitecolor
+    color: $whitecolor 
+
+.post
+  margin-top: 78px
+
+.post-content
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif 
+  font-size: 20px
+  line-height: 2 
+  
+.post-title
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+  font-size: 24px
+  color: $maincolor
+  font-weight: 700
+  line-height: 2
+  padding-top: 8px
+  padding-bottom: 8px
+  
+.post-category,.post-date
+  color: $greycolor
+  display: inline-block
+  font-size: 18px
+  padding-top: 12px
+  padding-bottom: 16px
+  
+.post-category
+  a
+    color: $maincolor
+     
+.footer
+  padding-top: 40px
+  padding-bottom: 40px
+  background-color: $blackcolor
+
+  .footer-logo
+    display: block
+    font-size: 28px
+    color: $maincolor
+    +size(120px,40px)
+    margin-bottom: 8px
+
+.list
+  padding-top: 24px
+  padding-bottom: 24px
+  .list-link
+    padding-top: 16px
+    padding-bottom: 16px
+    color: $whitecolor
+    display: inline-block
+    
+.contact-btn
+@media(max-width:768px)
+  .contact-btn
+    float: left
+    left: 50%
+    transform: translateX(-50%)
+
+.lonely-info
+  z-index: 10
+
+.signin
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+  +size(100vw,100vh)
+  margin-top: 68px
+  font-size: 20px
+  padding: 16px
+  line-height: 2
+  .signin-title
+    font-weight: 700
+    padding-top: 12px
+  input
+    +size(80%,32px)
+    font-size: 16px
+    padding-left: 4px
+  
+.btn-submit
+  padding: 16px
+  margin-top: 32px
+  right: 0
+
+.contact 
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+  color: $whitecolor
+  padding-top: 24px
+  padding-bottom: 24px 
+  .contact-item
+    margin-bottom: 24px
+    .contact-label
+      color: $maincolor
+      font-size: 16px
+      margin-bottom: 8px
+    .contact-link
+      color: #fff
+      display: inline
+
+.footer-icon-group
+  padding-top: 24px
+  padding-left: 44px
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+  .icon-btn
+    margin-right: 36px
+
+.copyright
+  text-align: center
+  font-size: 14px
+  margin-top: 24px
+  color: #484848
+

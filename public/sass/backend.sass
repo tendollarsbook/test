@@ -1,0 +1,512 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css)
+
+@mixin size($w,$h:$w)
+  width: $w
+  height: $h
+  
+$maincolor: #A1C45A
+$subcolor: #FEC8D8
+$thirdcolor: #D291BC
+$bgcolor: #FFF9E0
+$whitecolor: #ffffff
+$blackcolor: #282828
+$greycolor: #9B9B9B
+$lightgrey: #D7D7D7
+$lightestgrey: #F2F2F2
+
+*
+  font-family: 微軟正黑體 ,'Helvetica', 'Noto Sans TC', arial, sans-serif
+  position: relative
+  box-sizing: border-box
+  
+.row
+  &:after
+    content: ""
+    clear: both
+    display: block
+    height: 0
+    visibility: hidden
+  
+.col-2-12,.col-3-12,.col-4-12,.col-5-12,.col-6-12,.col-8-12,.col-10-12,.col-12-12
+  padding-left: 8px
+  padding-right: 8px
+  float: left
+
+.col-2-12
+  width: 16.66667% 
+  
+.col-3-12
+  width: 25% 
+  
+.col-4-12
+  width: 33.33333% 
+  
+.col-5-12
+  width: 41.66667%
+  
+.col-6-12
+  width: 50%
+  
+.col-8-12
+  width: 66.66667%
+  
+.col-10-12
+  width: 83.33333%
+  
+.col-12-12
+  width: 100%
+  
+.col-push-1
+  left: 8.33333%
+  
+.col-push-2
+  left: 16.66667%
+  
+.col-push-10
+  left: 83.33333%
+  
+.container
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+  min-width: 400px
+  max-width: 1024px
+  margin-left: auto
+  margin-right: auto
+  padding-left: 16px
+  padding-right: 16px
+  
+a
+  text-decoration: none
+  
+.btn
+  display: inline-block
+  vertical-align: middle
+  position: relative
+  margin: 0
+  padding: 8px 
+  box-sizing: border-box
+  font-size: 20px
+  line-height: 32px
+  text-align: center
+  font-weight: 500
+  letter-spacing: 0
+  text-decoration: none
+  color: $maincolor
+  border: 2px solid $maincolor
+  background-color: $whitecolor
+  cursor: pointer
+  overflow: hidden
+  user-select: none
+  outline: none
+  transition: all 0.3s
+  border-radius: 5px
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+  &:hover
+    background-color: $maincolor
+    color: $whitecolor
+  
+.header
+  background-color: $blackcolor
+  position: fixed
+  top: 0
+  left: 0
+  +size(100%,72px)
+  z-index: 100
+  // background-color: $maincolor
+  
+.image_inner
+  width: 100%
+  padding-top: 60%
+  height: 0
+  position: relative
+  
+.image_cover
+  width: 100%
+  height: 100%
+  border-radius: 8px
+  position: absolute
+  top: 0
+  left: 0
+  background-position: center
+  background-size: cover
+  
+.header
+  background-color: $blackcolor
+  position: fixed
+  top: 0
+  left: 0
+  +size(100%,72px)
+  z-index: 100
+  // background-color: $maincolor
+  
+.navbar-nav   
+  float: right
+
+@media(max-width: 960px)
+  .navbar-collapse
+    margin-left: -16px
+    margin-right: -16px
+
+.menu-toggle
+  position: absolute
+  top: 0
+  right: 0
+  +size(64px)
+  display: inline-block
+  padding: 12px
+  padding-top: 16px
+  span 
+    display: block
+    +size(100%,3px)
+    background-color: $maincolor
+    margin-bottom: 8px
+    
+@media(min-width: 500px)
+  .menu-toggle
+    display: none
+
+.navbar-logo
+  display: inline-block
+  height: 64px
+  float: none
+  padding: 24px
+  color: $maincolor
+  transition: all 0.3s
+  font-size: 24px
+  font-weight: 900
+  
+.nav-menu
+  float: left
+  li
+    float: left
+  .menu-item
+    display: block
+    padding: 24px
+    color: $maincolor
+    line-height: 32px
+    font-size: 18px
+    transition: all 0.3s
+    &:hover
+      color: $thirdcolor
+
+@media(max-width: 500px)
+  .popup-nav
+    position: fixed
+    top: 0
+    left: 0
+    +size(100%)
+    background-color: #1c1c1c
+    opacity: 0
+    visibility: hidden
+    transition: all 0.3s
+    .nav-menu
+      float: none
+      padding-top: 56px
+    li
+      float: none
+    .nav-icon-group
+      float: none
+      text-align: center
+      padding: 16px
+    .menu-item
+      padding: 16px
+      text-align: center
+  .popup-close
+    position: absolute
+    top: 0
+    right: 0
+    +size(56px)
+    display: inline-block
+    padding: 12px
+    padding-top: 16px
+    span 
+      +size(32px,3px)
+      background-color: $maincolor
+      position: absolute
+      top: 50%
+      &:nth-child(1)
+        transform: translateY(-50%) rotate(45deg)
+      &:nth-child(2)
+        transform: translateY(-50%) rotate(-45deg)
+
+  #overlap:target
+    opacity: 1
+    visibility: visible
+    
+.content-backend
+  // +size(100vw,100vh)
+
+.alert-messages 
+  +size(100%)
+  background-color: $maincolor
+  color: $blackcolor
+  border-radius: 8px
+  padding-left: 8px
+  margin-top: 8px
+  margin-bottom: 8px
+  transition: all 0.3s
+    
+.categoriespage
+  margin-top: 68px
+  font-size: 20px
+  padding: 16px
+  line-height: 2
+  
+.categories-title-name
+  font-weight: 700
+  border-bottom: 2px $lightgrey solid
+  
+.categories-title-display
+  padding-top: 16px
+  padding-bottom: 16px
+  border-bottom: 2px $lightgrey solid
+  
+.categories-title-inputname
+  font-weight: 700
+  padding-top: 16px
+  
+.categories-title-input
+  padding-top: 16px
+  input
+    +size(100%,36px)
+    font-size: 16px
+    padding-left: 4px
+  
+.btn-del,.btn-update
+  padding: 2px 8px
+  float: right
+  
+.btn-update
+  margin-top: 32px
+  
+.signin
+  +size(100vw,100vh)
+  margin-top: 68px
+  font-size: 20px
+  padding: 16px
+  line-height: 2
+  .signin-title
+    font-weight: 700
+    padding-top: 12px
+  input
+    +size(80%,32px)
+    font-size: 16px
+    padding-left: 4px
+  
+.btn-submit
+  margin-top: 32px
+  right: 0
+  
+.articlemanage
+  // +size(100vw,100vh)
+  margin-top: 68px
+  font-size: 20px
+  padding: 16px
+  line-height: 2
+  
+.function-bar
+  margin-top: 16px
+  font-size: 16px
+  text-align: center
+  line-height: 1.5
+  z-index: 5
+  
+.function
+  border: 1px solid $greycolor
+  transition: all 0.3s
+  cursor: pointer
+  color: $blackcolor
+  padding: 8px
+  &:hover
+    background-color: $greycolor
+    color: $whitecolor
+.fc-active
+  color: $whitecolor
+  background-color: $greycolor
+  
+.function-add  
+  background-color: $maincolor
+  color: $whitecolor
+  &:hover
+    background-color: $whitecolor
+    color: $maincolor
+  
+.articlelist-box
+  padding-top: 64px
+  li
+    margin-top: 16px
+  
+.article-title,.article-content,.art-item
+  border: 1px solid $greycolor
+  padding: 8px 16px
+  
+.article-title
+  background-color: $lightestgrey
+  +size(100%)
+  font-size: 24px
+  
+.art-detail
+  font-size: 16px
+  padding-top: 16px
+  
+.art-date-ymd,.art-tag-cat 
+  display: inline-block
+  
+.art-item
+  text-align: center
+  cursor: pointer
+  color: $blackcolor
+  background-color: $lightestgrey
+  font-size: 16px
+
+.art-nav-del
+  color: red
+
+.mailres
+  margin-top: 78px
+  .col-btn
+    margin: 32px
+    left: 50%
+    transform: translateX(-25%)
+  .post-title
+    margin-top: 16px
+    padding-left: 16px
+    background-color: $lightestgrey
+    border-radius: 5px
+  .post-content
+    margin-top: 16px
+    padding: 16px
+    background-color: $lightestgrey
+    border-radius: 5px
+    line-height: 2
+    font-size: 20px
+    span
+      font-size: 24px
+      color: $maincolor
+      font-weight: 700
+  
+.mailtitle
+  text-align: center
+  font-size: 32px
+  font-weight: 700
+  margin: 64px
+  
+.pagination 
+  display: flex
+  justify-content: center
+  margin-top: 24px
+
+.page-arr, .page-item 
+  vertical-align: middle
+  margin-bottom: 24px
+  width: 42px
+  height: 42px
+  border: 1px solid $lightgrey
+  transition: 0.5s
+  background-color: $greycolor
+  color: $whitecolor
+  &:hover 
+    background-color: $maincolor
+    color: $whitecolor
+.page-arr
+  font-size: 5px
+  padding: 14px 16px
+.page-item 
+  padding: 2px 16px
+.page-active 
+  background-color: $maincolor
+  color: $whitecolor
+.page-disabled
+  background-color: $whitecolor
+  color: $whitecolor
+  border: 1px solid $whitecolor
+  cursor: auto
+  &:hover 
+    background-color: $whitecolor
+    color: $whitecolor
+  
+.editarticle
+  +size(100vw,100vh)
+  margin-top: 68px
+  font-size: 20px
+  padding: 16px
+  line-height: 2
+  .categories-name
+    margin-top: 8px
+    +size(100%,32px)
+    font-size: 16px
+    padding-left: 4px
+  hr
+    margin-top: 16px
+    margin-bottom: 16px
+
+.status
+  display: none
+    
+.tag-name
+  background-color: $lightestgrey
+  border: 1px solid $lightgrey
+  padding-left: 8px
+  border-radius: 4px
+  
+.tag-content
+  padding: 16px
+  border-radius: 4px
+  border: 1px solid $lightgrey
+  margin-top: -1px
+
+.btn-open,.btn-private
+  transition: all 0.3s
+
+.ys-checked
+  background-color: $maincolor
+  color: $whitecolor
+  transition: all 0.1s
+
+.tag-ys
+  margin-top: 32px
+  margin-bottom: 32px
+  .col-6-12
+    padding-left: 0px
+    padding-right: 0px
+  .btn
+    width: 100%
+      
+.btn-table
+  width: 100%
+
+.editpost
+  +size(100vw,100vh)
+  margin-top: 78px
+
+.post-content
+  font-size: 20px
+  line-height: 2 
+  
+.post-title
+  font-size: 24px
+  color: $maincolor
+  font-weight: 700
+  line-height: 2
+  
+.post-category,.post-date
+  color: $greycolor
+  display: inline-block
+  font-size: 18px
+  padding-top: 8px
+  padding-bottom: 16px
+  
+.post-category
+  a
+    color: $maincolor
+  
+.footer-backend
+  background-color: $blackcolor
+  +size(100%,72px)
+  h3
+  font-family: 'Helvetica', 'Noto Sans TC', arial, sans-serif  
+    color: $maincolor
+    padding: 24px
+    font-size: 24px
+    font-weight: 700
+    text-align: center
+

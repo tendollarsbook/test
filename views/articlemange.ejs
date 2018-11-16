@@ -1,0 +1,68 @@
+<% extend('./layouts/layout') %>
+
+<div class="articlemanage">
+    <div class="container">
+      <div class="col-10-12 col-push-1 function-bar">
+        <div class="row">
+          <a href="/articlemange?status=public" class="col-4-12 function <% if(status === 'public'){%>fc-active<%} %>">已發布</a>
+          <a href="/articlemange?status=draft" class="col-4-12 function <% if(status === 'draft'){%>fc-active<%} %>">草稿</a>
+          <a href="/editarticle/create" class="col-4-12 function function-add">新增文章</a>
+        </div>
+      </div>
+      <div class="articlelist-box row">
+        <div class="col-10-12 col-push-1">
+          <ul class="articlelist">
+            <% for (var prop in articles) { %>
+              <li>
+                <div class="article-title">
+                  <%- articles[prop].title %>
+                </div>
+                <div class="article-content">
+                  <%- stringtags( articles[prop].content).slice(0, 150) %>...
+                  <div class="art-detail">
+                    <div class="art-date">
+                      <i class="fa fa-clock-o"></i>
+                      <div class="art-date-ymd"><%- moment(articles[prop].update_time * 1000).format('YYYY/MM/DD') %></div>
+                    </div>
+                    <div class="art-tag">
+                      <i class="fa fa-tag"></i>
+                      <div class="art-tag-cat">
+                       <% for(i=0; i < articles.len ; i++) { %>
+                        <% if (categories.hasOwnProperty(articles[prop].category[i])) { %>
+                          <%= categories[articles[prop].category[i]].name %>
+                           
+                          <% } %>
+                        <% } %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="article-nav row">
+                  <div class="col-4-12 art-item art-nav-del" data-id="<%- articles[prop].id %>" data-title="<%- articles[prop].title %>">刪除</div>
+                  <a href="/editarticle/<%- articles[prop].id %>">
+                    <div class="col-4-12 art-item art-nav-edit" data-id="<%- articles[prop].id %>">編輯</div>
+                  </a>
+                  <a href="/editpost/<%- articles[prop].id %>">
+                    <div class="col-4-12 art-item art-nav-preview">預覽</div>
+                  </a>                   
+                </div>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+      <div class="pagination">
+        <a href="/articlemange?page=<%- page.currentPage - 1 %>" class="page-arr prev <% if (!page.hasPre) { %>page-disabled<% } %>">
+          <i class="fa fa-chevron-left"></i>
+        </a>
+        <% for (var i = 1; i < page.pageTotal + 1; i++){ %>
+          <a href="/articlemange?page=<%- i %>" class="page-item <% if (i == page.currentPage) {%> page-active <%}%>">
+            <%- i %>
+          </a>
+        <% } %>
+        <a href="/articlemange?page=<%- page.currentPage + 1 %>" class="page-arr next <% if (!page.hasNext) { %>page-disabled<% } %>">
+          <i class="fa fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>

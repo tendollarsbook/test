@@ -1,0 +1,49 @@
+<% extend('./layouts/layout') %>
+<div class="content content-backend">
+  <div class="container">
+    <div class="row">
+      <div class="categoriespage col-8-12 col-push-2">
+        <div class="row categories-title-name">
+          <% if (hasInfo) { %>
+            <% for (var prop in messages ) { %>
+              <div class="alert-messages">
+                <%- messages[prop] %>
+              </div>
+            <% } %>
+          <% } %>
+          <div class="col-2-12">名稱</div>
+          <div class="col-10-12">路徑</div>
+        </div>
+        <ul class="categories-title-displaylist">
+          <% for (var prop in categories) { %>
+            <li class="row categories-title-display">
+              <div class="col-2-12"><%- categories[prop].name %></div>
+              <div class="col-6-12"><%- categories[prop].path %></div>
+              <div class="col-4-12">
+                <form action="/categories/delete/<%- prop %>" method="POST">
+                  <button type="submit" class="btn btn-del">刪除</button>
+                </form>
+              </div>
+            </li>
+          <% } %>
+        </ul>
+        <div class="row categories-title-inputname">
+          <div class="col-5-12 col-push-2">分類名稱</div>
+          <div class="col-5-12 col-push-2">路徑</div>
+        </div>
+        <form action="/categories/create" method="POST">
+          <div class="row categories-title-input">
+            <div class="col-2-12">新增</div>
+            <div class="col-5-12">
+              <input type="text" class="categories-name" name="name" placeholder="請輸入分類名稱">
+            </div>
+            <div class="col-5-12">
+              <input type="text" class="categories-path" name="path" placeholder="請輸入分類路徑">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-update">更新資訊</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

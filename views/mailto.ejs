@@ -1,0 +1,42 @@
+<% extend('./layouts/layout') %>
+
+<div class="mailres">
+  <div class="container">
+    <form action="/mailto/<%- article.id %>" method="post">
+      <div class="row">
+        <div class="col-10-12 col-push-1">
+          <div class="mailtitle">
+            <% if (hasInfo) { %>
+              <% for (var prop in mailmessages ) { %>
+                  <%- mailmessages[prop] %>
+              <% } %>
+            <% } %>
+          </div>
+          <!-- <input type="password" class=""  name="mailsubjet" value="十元部落 <'tendollarsbook@gmail.com'>">  -->
+          <div class="post-title">
+            <span>寄件者：</span>十元部落 <'sysuproject@gmail.com'>
+            <!-- <input type="text" class=""  name="mailfrom" value="十元部落 <tendollarsbook@gmail.com>">  -->
+          </div>
+          <div class="post-title">
+            <span>主旨：</span><%- article.title || ' ' %>
+            <!-- <input type="text" class=""  name="mailsubject" value=<%- article.title || ' ' %>>  -->
+          </div>
+          <div class="post-content">
+            <span>內容：</span><%- article.content || ' ' %>
+          </div>
+          <div class="row">
+            <div class="col-8-12 col-btn mail-btn">
+              <a href="/editarticle/<%- article.id %>">
+                <div class="btn">回編輯頁面</div>
+              </a>
+              <button type="submit" class="btn">確認送出</button>
+              <!-- <a href="/articlemange">
+                <div class="btn">確認送出</div>
+              </a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

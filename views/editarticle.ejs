@@ -1,0 +1,79 @@
+<% extend('./layouts/layout') %>
+
+<% 
+  if(article === undefined){
+    var article = {};
+  }
+%>
+
+<div class="editarticle">
+  <div class="container">
+    <div class="row">
+      <div class="col-10-12 col-push-1">
+        <div class="row">
+          <form
+          <% if (article.id) { %>
+            action="/editarticle/update/<%- article.id %>"
+          <% } else { %>
+            action="/editarticle/create"
+          <% } %>  
+           method="POST" >
+              <div class="col-12-12">
+                <div class="row">
+                  <div class="col-8-12">
+                    <div class="art-text"><label for="title">請輸入標題</label></div>
+                    <input type="text" class="categories-name" name="title" placeholder="標題" value="<%= article.title || ' ' %>">
+                    <hr>
+                    <textarea name="content" id="editor">
+                        <%- article.content || ' ' %>
+                    </textarea>
+                    <script>
+                      CKEDITOR.replace( 'content' );
+                    </script>
+                  </div>
+                  <div class="col-4-12">
+                    <div class="tag-table">
+                      <div class="tag-name">分類</div>
+                      <div class="tag-content">
+                        <% for (var prop in categories) { %> 
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox" name="category" value="<%- prop %>"
+                              <% for(i=0; i < article.len ; i++) { %>
+                                <% if(prop === article.category[i]) {%>checked<%} %>
+                              <% } %>
+                              >
+                              <%- categories[prop].name %>
+                            </label>
+                          </div>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="tag-table tag-ys">
+                      <div class="tag-name">是否公開</div>
+                      <div class="tag-content">
+                        <div class="row">
+                          <div class="col-6-12">
+                            <label class="btn btn-private <% if(article.status === 'draft'){%>ys-checked<%} %>">
+                              <input type="radio" name="status" class="status" autocomplete="off" value="draft" <% if(article.status === 'draft'){%>checked<%} %> > 草稿
+                            </label>
+                          </div>
+                          <div class="col-6-12">
+                            <label class="btn btn-open <% if(article.status === 'public'){%>ys-checked<%} %>">
+                              <input type="radio" name="status" class="status" autocomplete="off" value="public" <% if(article.status === 'public'){%>checked<%} %>  > 公開
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-table">儲存</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

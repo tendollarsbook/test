@@ -1,0 +1,83 @@
+<% extend('./layouts/layouthome') %>
+<% 
+  if(catepath === undefined){
+    var catepath = '';
+  }
+  if(catename === undefined){
+    var catename = '全部文章';
+  }
+%>
+
+<div class="categoryarticle">
+  <div class="container">
+    <div class="row">
+      <div class="col-3-12 categories-left">
+        <div class="categoriesboard">
+          <div class="article-maintitle">分類</div>
+          <% for (var prop in categories) { %>
+            <a href="/categoryarticle/<%= categories[prop].path %>">
+              <div class="btn btn-cateart"><%- categories[prop].name %></div>  
+            </a>
+          <% } %>
+        </div>
+      </div>
+      <div class="col-9-12 article-right">
+        <div class="row">
+          <div class="col-12-12">
+            <div class="article-list">
+              <div class="container">
+                <div class="article-maintitle">文章列表 / 
+                  <a href="/categoryarticle/<%= catepath %>">
+                    <div class="category-title">
+                      <%= catename %>
+                    </div>
+                  </a>
+                </div>
+                <% for (var prop in articles) { %>
+                  <div class="article-card">
+                    <a href="/post/<%= articles[prop].id %>"> 
+                      <div class="row">
+                        <div class="col-10-12 col-push-1">
+                          <div class="article-title">
+                            <%- stringtags( articles[prop].title) %>
+                          </div>
+                          <p>
+                            <%- stringtags( articles[prop].content).slice(0, 70) %>...
+                          </p>
+                          <div class="ariticle-date cat-date">
+                            <%- moment(articles[prop].update_time * 1000).format('YYYY/MM/DD') %>
+                          </div>
+                          <a href="/categoryarticle/<%= categories[articles[prop].category].path %>" class="article-category cat-category">
+                            <% if (categories.hasOwnProperty(articles[prop].category)) { %>
+                            <%= categories[articles[prop].category].name %>
+                            <% } else { %>
+                              沒有分類  
+                            <% } %>
+                          </a>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                <% } %>
+                <div class="articlepage"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pagination">
+    <a href="/categoryarticle/?page=<%- page.currentPage - 1 %>" class="page-arr prev <% if (!page.hasPre) { %>page-disabled<% } %>">
+      <i class="fa fa-chevron-left"></i>
+    </a>
+    <% for (var i = 1; i < page.pageTotal + 1; i++){ %>
+      <a href="/categoryarticle/?page=<%- i %>" class="page-item <% if (i == page.currentPage) {%> page-active <%}%>">
+        <%- i %>
+      </a>
+    <% } %>
+    <a href="/categoryarticle/?page=<%- page.currentPage + 1 %>" class="page-arr next <% if (!page.hasNext) { %>page-disabled<% } %>">
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>

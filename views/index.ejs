@@ -1,0 +1,63 @@
+<% extend('./layouts/layouthome') %>
+
+<div class="subscript">
+  <div class="container">
+    <div class="row">
+      <div class="col-8-12 col-push-2">
+        <form action="" method="post">
+          <div class="hero-text"><%- errors %></div>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <input type="text" class="subscript-name" name="email" placeholder="請輸入 email">
+          <input  class="btn" type="submit" value="訂閱電子報" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="container">
+    <h3 class="hero-text">開啟你的斜槓人生！!！訂閱電子報得到更多零感～</h3>   
+    <div class="row hero">
+      <div class="col-12-12 ">
+        <div class="image_inner">
+          <div class="image_cover" style="background-image: url('https://images.unsplash.com/photo-1536080885177-6c66afc5a23b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c39777981745f8b314bf45578b229f41&auto=format&fit=crop&w=3002&q=80');">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="article-list">
+  <div class="container">
+    <div class="article-maintitle">文章列表</div>
+    <% for (var prop in articles) { %>
+      <div class="article-card">
+        <a href="/post/<%= articles[prop].id %>"> 
+          <div class="row">
+            <div class="col-10-12 col-push-1">
+              <div class="article-title">
+                <%- articles[prop].title %>
+              </div>
+              <p>
+                <%- stringtags( articles[prop].content).slice(0, 150) %>...
+              </p>
+              <div class="ariticle-date">
+                  <%- moment(articles[prop].update_time * 1000).format('YYYY/MM/DD') %>
+              </div>
+              <a href="/categoryarticle/<%= categories[articles[prop].category].path  %>" class="article-category">
+                <% if (categories.hasOwnProperty(articles[prop].category)) { %>
+                <%= categories[articles[prop].category].name %>
+                <% } else { %>
+                  沒有分類  
+                <% } %>
+              </a>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+    <div class="articlepage"></div>
+  </div>
+</div>
+
+<%- include('partials/pagination') %>

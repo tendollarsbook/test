@@ -1,0 +1,14 @@
+
+<div class="pagination">
+  <a href="/?page=<%- page.currentPage - 1 %>" class="page-arr prev <% if (!page.hasPre) { %>page-disabled<% } %>">
+    <i class="fa fa-chevron-left"></i>
+  </a>
+  <% for (var i = 1; i < page.pageTotal + 1; i++){ %>
+    <a href="/?page=<%- i %>" class="page-item <% if (i == page.currentPage) {%> page-active <%}%>">
+      <%- i %>
+    </a>
+  <% } %>
+  <a href="/?page=<%- page.currentPage + 1 %>" class="page-arr next <% if (!page.hasNext) { %>page-disabled<% } %>">
+    <i class="fa fa-chevron-right"></i>
+  </a>
+</div>

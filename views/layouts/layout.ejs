@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tendollarsblog</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/backend.css">
+</head>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/javascripts/ckeditor/ckeditor.js"></script>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="container">
+        <div class="navbar u-cf navbar-collapse">
+          <a href="/" class="navbar-logo">Tendollars</a>
+          <a href="#overlap" class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+          <div id="overlap" class="navbar-nav row popup-nav">
+            <ul class="nav-menu row">
+              <li><a href="/editarticle/create" class="menu-item">文章輸入</a></li>
+              <li><a href="/articlemange" class="menu-item">文章管理</a></li>
+              <li><a href="/categories" class="menu-item">分類管理</a></li>
+              <li><a href="/signout" class="menu-item">登出</a></li>
+            </ul>
+            <a href="#!" class="popup-close">
+              <span></span>
+              <span></span>
+            </a>
+          </div>
+        </div>  
+      </div>
+    </header>
+    <%- content %>
+    <div class="footer footer-backend">
+      <h3>Tendollars 後台管理</h3>
+    </div>
+  </div>
+  <script src="/javascripts/jquery-3.2.1.min.js"></script>
+  <script src="/javascripts/all.js"></script>
+</body>
+</html>
